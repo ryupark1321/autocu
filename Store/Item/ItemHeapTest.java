@@ -3,6 +3,10 @@ import static org.junit.Assert.*;
 import java.util.*;
 import Store.Item.*;
 public class ItemHeapTest{
+	public static void main(String[] args){
+		itemtypetest1();
+		itemtest();
+	}
 
 	@Test
 	public void itemtypetest1(){
@@ -162,8 +166,15 @@ public class ItemHeapTest{
 		assertEquals(item2.isFresher(item1), false)
 
 		//setPrice Test
-		
-		assertEquals(item1.setPrice())
+		item1.setPrice(float 2.99)
+		item2.setPrice(float 3.99)
+		item3.setPrice(float 4.99)
+		item4.setPrice(float 5.99)
+
+		assertEquals(item1.price, 2.99)
+		assertEquals(item2.price, 3.99)
+		assertEquals(item3.price, 4.99)
+		assertEquals(item4.price, 5.99)
 	}
 	
 
