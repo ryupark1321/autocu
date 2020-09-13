@@ -6,6 +6,9 @@ public class ItemType{
   public ItemType(String s, boolean b){
     type = s;
     perishable = b;
+		if(s.equals("")){
+			raise Exception("NoItemTypeException")
+		}
   }
                 
 	/** equals(a,t) compares the two fields and returns true if the two fields of the itemtypes a and t matches. */

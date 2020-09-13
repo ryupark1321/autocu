@@ -3,8 +3,7 @@ import java.util.Date;
 public class Item{
 
   public final ItemType type;
-  public final int sernum; //assume sernum contains all information about the product including manufacturer, factory, and distributor.
-            // Initial Assumption: the item when scanned will automatically decode the sernum.
+  public final int sernum;
   public final Date importedate;
   public final String name;
   public final Date expr;
