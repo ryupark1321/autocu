@@ -1,7 +1,6 @@
 package store;
 
 import java.util.HashMap;
-import item.*;
 
 public class Store{
 /**

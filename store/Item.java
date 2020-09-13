@@ -12,7 +12,7 @@ public class Item{
   public double price;
   public String brandname;
      
-  public Item(ItemType t, int s, Date i, String n, Date e, float p, String b){
+  public Item(ItemType t, int s, Date i, String n, Date e, double p, String b){
     type = t;
     sernum = s;
     importedate = i;

@@ -1,10 +1,7 @@
-package test;
+package store;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static store.Item;
-import static store.ItemType;
-import static store.ItemHeap;
 
 import org.junit.*;
 import java.util.*;
@@ -141,10 +138,10 @@ public class ItemHeapTest{
 		System.out.println("Equals Test : Success");
 
 		//toString Test
-		assertEquals(item1.toString, "name1");
-		assertEquals(item2.toString, "name2");
-		assertEquals(item3.toString, "name3");
-		assertEquals(item4.toString, "name4");
+		assertEquals(item1.toString(), "name1");
+		assertEquals(item2.toString(), "name2");
+		assertEquals(item3.toString(), "name3");
+		assertEquals(item4.toString(), "name4");
 		System.out.println("toString Test : Success");
 
 		//isExpired Test
