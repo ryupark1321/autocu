@@ -1,3 +1,5 @@
+package Store;
+
 import java.util.HashMap;
 
 public class Store{

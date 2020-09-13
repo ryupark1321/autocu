@@ -1,2 +1,2 @@
-language = "bash"
-run = "Store/Item/ItemHeapTest.java" 
+language = "java"
+run = "java Test/ItemHeapTest.java" 

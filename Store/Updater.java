@@ -1,3 +1,5 @@
+package Store;
+
 import java.util.function.BiConsumer;
 import java.util.ArrayList;
 public class Updater implements BiConsumer<String, ItemHeap>{

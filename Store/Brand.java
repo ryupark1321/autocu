@@ -1,3 +1,5 @@
+package Store;
+
 public class Brand{
   public String serviceNumber;
   public int error_num; //number of faulty item occurrences

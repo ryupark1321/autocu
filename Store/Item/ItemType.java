@@ -1,3 +1,5 @@
+package Item;
+
 public class ItemType{
   public String type;  //type is onto which category of the store the item will be classified to
   public boolean perishable; // self-explanatory
@@ -6,8 +8,10 @@ public class ItemType{
   public ItemType(String s, boolean b){
     type = s;
     perishable = b;
-		if(s.equals("")){
-			raise Exception("NoItemTypeException")
+		try{
+			if(s.equals("")){throw new Exception("NoItemTypeException");}
+		}catch (Exception e){
+			System.out.println("Try Again");
 		}
   }
                 

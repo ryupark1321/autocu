@@ -1,3 +1,5 @@
+package Item;
+
 import java.util.Date;
 
 public class Item{
@@ -7,7 +9,7 @@ public class Item{
   public final Date importedate;
   public final String name;
   public final Date expr;
-  public float price;
+  public double price;
   public String brandname;
      
   public Item(ItemType t, int s, Date i, String n, Date e, float p, String b){
@@ -36,7 +38,7 @@ public class Item{
       System.out.println("Expiration Date : " + expr.toString());
     }
     System.out.println("Imported Date : " + importedate.toString());
-    System.out.println("Price : " + Float.toString(price));
+    System.out.println("Price : " + double.toString(price));
 		System.out.println("Brand : " + brandname);
   }
 
@@ -58,7 +60,7 @@ public class Item{
     return impr_comp;
   }
     
-  public void setPrice(float f){
+  public void setPrice(double f){
     price = f;
   }
 }
