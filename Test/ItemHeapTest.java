@@ -2,9 +2,9 @@ package test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static store.item.Item;
-import static store.item.ItemType;
-import static store.item.ItemHeap;
+import static store.Item;
+import static store.ItemType;
+import static store.ItemHeap;
 
 import org.junit.*;
 import java.util.*;

@@ -1,4 +1,4 @@
-package item;
+package store;
 
 import java.util.Date;
 
@@ -38,7 +38,7 @@ public class Item{
       System.out.println("Expiration Date : " + expr.toString());
     }
     System.out.println("Imported Date : " + importedate.toString());
-    System.out.println("Price : " + double.toString(price));
+    System.out.println("Price : " + Double.toString(price));
 		System.out.println("Brand : " + brandname);
   }
 
