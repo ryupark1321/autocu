@@ -1,4 +1,4 @@
-package Item;
+package item;
 
 public class ItemType{
   public String type;  //type is onto which category of the store the item will be classified to

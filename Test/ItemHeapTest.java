@@ -1,10 +1,10 @@
-package Test;
+package test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static Store.Item.Item;
-import static Store.Item.ItemType;
-import static Store.Item.ItemHeap;
+import static store.item.Item;
+import static store.item.ItemType;
+import static store.item.ItemHeap;
 
 import org.junit.*;
 import java.util.*;

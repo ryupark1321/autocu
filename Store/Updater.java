@@ -1,4 +1,4 @@
-package Store;
+package store;
 
 import java.util.function.BiConsumer;
 import java.util.ArrayList;

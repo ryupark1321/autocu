@@ -1,4 +1,4 @@
-package Item;
+package item;
 
 import java.util.Comparator;
 import java.util.function.Function;
