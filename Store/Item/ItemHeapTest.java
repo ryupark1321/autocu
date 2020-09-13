@@ -4,12 +4,12 @@ import java.util.*;
 import Store.Item.*;
 public class ItemHeapTest{
 	public static void main(String[] args){
-		itemtypetest1();
+		itemtypetest();
 		itemtest();
 	}
 
 	@Test
-	public void itemtypetest1(){
+	public void itemtypetest(){
 		ItemType type1 = new ItemType("Electronics",false);
 		ItemType type2 = new ItemType("LifeStyle",true);
 		ItemType type3 = new ItemType("Food",true);
@@ -177,6 +177,10 @@ public class ItemHeapTest{
 		assertEquals(item4.price, 5.99)
 	}
 	
+	@Test
+	public void itemheaptest(){
+		
+	}
 
 
 
