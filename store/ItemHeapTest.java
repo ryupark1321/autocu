@@ -1,7 +1,6 @@
 package store;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.*;
 import java.util.*;
@@ -9,7 +8,6 @@ import java.util.*;
 public class ItemHeapTest{
 	@Test
 	public void itemtypetest(){
-		System.out.println("Starting ItemTypeTest: ");
 		ItemType type1 = new ItemType("Electronics",false);
 		ItemType type2 = new ItemType("LifeStyle",true);
 		ItemType type3 = new ItemType("Food",true);
@@ -24,20 +22,12 @@ public class ItemHeapTest{
 		assertEquals(type3.type, "Food");
 		assertEquals(type4.perishable, true);
 		assertEquals(type4.type, "Dairy");
-		System.out.println("Constructor Test: Success");
-		/**
-		try{
-			ItemType type_faulty = new ItemType("", False);
-		}catch(Exception e){
-			print("No Item Type Detected")
-		}*/
 
 		//toString Test
 		assertEquals(type1.toString(), "Electronics");
 		assertEquals(type2.toString(), "LifeStyle");
 		assertEquals(type3.toString(), "Food");
 		assertEquals(type4.toString(), "Dairy");
-		System.out.println("toString Test: Success");
 
 		//equals Test
 		ItemType type5 = new ItemType("Electronics",false);
@@ -49,12 +39,10 @@ public class ItemHeapTest{
 		assertEquals(type2.equals(type6), false);
 		assertEquals(type3.equals(type7), true);
 		assertEquals(type4.equals(type8), false);
-		System.out.println("equals Test: Success");
 	}
 
 	@Test
 	public void itemtest(){
-		System.out.println("ItemTest : ");
 		ItemType type1 = new ItemType("Electronics",false);
 		ItemType type2 = new ItemType("LifeStyle",true);
 		ItemType type3 = new ItemType("Food",true);
@@ -119,7 +107,6 @@ public class ItemHeapTest{
 		assertEquals(item2.brandname, "b2");
 		assertEquals(item3.brandname, "b3");
 		assertEquals(item4.brandname, "b4");
-		System.out.println("Constructor Test : Success");
 
 		//Equals Test
 		Item item5 = new Item(type1, 11111111, day1, name1, eday1, f1, b1);
@@ -135,14 +122,12 @@ public class ItemHeapTest{
 		assertEquals(item2.equals(item7), false);
 		assertEquals(item3.equals(item8), false);
 		assertEquals(item4.equals(item5), false);
-		System.out.println("Equals Test : Success");
 
 		//toString Test
 		assertEquals(item1.toString(), "name1");
 		assertEquals(item2.toString(), "name2");
 		assertEquals(item3.toString(), "name3");
 		assertEquals(item4.toString(), "name4");
-		System.out.println("toString Test : Success");
 
 		//isExpired Test
 		Date eday5 = new Date(2020,10,5);
@@ -163,7 +148,6 @@ public class ItemHeapTest{
 		assertEquals(item2.isExpired(), false);
 		assertEquals(item3.isExpired(), false);
 		assertEquals(item4.isExpired(), false);
-		System.out.println("isExpired Test : Success");
 
 		//isFresher Test
 		assertEquals(item1.isFresher(item2), true);
@@ -172,7 +156,6 @@ public class ItemHeapTest{
 		assertEquals(item4.isFresher(item3), false);
 		assertEquals(item3.isFresher(item2), false);
 		assertEquals(item2.isFresher(item1), false);
-		System.out.println("isFresher Test : Success");
 
 		//setPrice Test
 		item1.setPrice(2.99);
@@ -184,11 +167,69 @@ public class ItemHeapTest{
 		assertEquals(item2.price, 3.99);
 		assertEquals(item3.price, 4.99);
 		assertEquals(item4.price, 5.99);
-		System.out.println("setPrice Tes;t: Success");
 	}
 	
 	@Test
-	public void itemheaptest(){
-		System.out.println("ItemHeapTest : ");
+	public void iheaptest(){
+		ItemType type1 = new ItemType("Electronics",false);
+		Date day1_1 = new Date(2021,1,1);
+		Date day1_2 = new Date(2021,1,2);
+		Date day1_3 = new Date(2021,1,3);
+		Date day1_4 = new Date(2021,1,4);
+		String name1 = "name1";
+		Date eday1_1 = new Date(2022,1,1);
+		Date eday1_2 = new Date(2022,1,2);
+		Date eday1_3 = new Date(2022,1,3);
+		Date eday1_4 = new Date(2022,1,4);
+		double f1 = 1.99;
+		String b1 = "b1";
+		Item item1_1 = new Item(type1, 11111111, day1_1, name1, eday1_1, f1, b1);
+		Item item1_2 = new Item(type1, 12121212, day1_2, name1, eday1_2, f1, b1);
+		Item item1_3 = new Item(type1, 13131313, day1_3, name1, eday1_3, f1, b1);
+		Item item1_4 = new Item(type1, 14141414, day1_4, name1, eday1_4, f1, b1);
+
+		//Constructor Test
+		ItemHeap iheap1 = new ItemHeap(item1_1);
+		ItemHeap iheap2 = new ItemHeap(item1_2);
+		ItemHeap iheap3 = new ItemHeap(item1_3);
+		ItemHeap iheap4 = new ItemHeap(item1_4);
+		System.out.println(iheap1.toString());
+		System.out.println(iheap2.toString());
+		System.out.println(iheap3.toString());
+		System.out.println(iheap4.toString());
+
+		//Equals Test
+		ItemHeap iheap5 = new ItemHeap(item1_1);
+		ItemHeap iheap6 = new ItemHeap(item1_2);
+		ItemHeap iheap7 = new ItemHeap(item1_3);
+		ItemHeap iheap8 = new ItemHeap(item1_4);
+		assertEquals(iheap1.equals(iheap5), true);
+		assertEquals(iheap2.equals(iheap6), true);
+		assertEquals(iheap3.equals(iheap7), true);
+		assertEquals(iheap4.equals(iheap8), true);
+
+		//is_empty, remove, add, toString Test
+		assertEquals(iheap1.remove(item1_1), true);
+		assertEquals(iheap2.remove(item1_2), true);
+		assertEquals(iheap1.remove(item1_1), false);
+		assertEquals(iheap2.remove(item1_2), false);
+		String test1 = iheap1.toString();
+		String test2 = iheap2.toString();
+		assertEquals(iheap1.isEmpty(), true);
+		assertEquals(iheap2.isEmpty(), true);
+		assertEquals(iheap1.add(item1_2), true);
+		assertEquals(iheap2.add(item1_1), true);
+		assertEquals(test1 == iheap2.toString(), true);
+		assertEquals(test2 == iheap1.toString(), true);
+		assertEquals(iheap1.add(item1_1), true);
+		assertEquals(iheap2.add(item1_2), true);
+		assertEquals(iheap1.equals(iheap2), true);
+
+		//findItem Test
+		assertEquals(iheap1.findItem(item1_1.sernum).equals(item1_1),true);
+		assertEquals(iheap2.findItem(item1_2.sernum).equals(item1_2),true);
+		//findItem String Test
+		assertEquals(iheap1.findItem_String(item1_1.sernum).equals(item1_1.toString()),true);
+		assertEquals(iheap2.findItem_String(item1_2.sernum).equals(item1_2.toString()),true);
 	}
 }
