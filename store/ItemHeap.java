@@ -18,40 +18,44 @@ public class ItemHeap extends PriorityQueue<Item> {
 	 */
 	public Item firstitem;
 	public HashMap<Integer, Item> map; // have the sernum, you can find the item.
-	public ArrayList<Item> catalog;
-	private boolean isFull;
 	public String brand;
+	public String itemname;
+	/** want to have a unique number for the item classification. Decode it. */
 
 	// There needs to be at least one item for
 	public ItemHeap(Item i) {
+		super(new ItemComparator());
+		add(i);
 		firstitem = i;
-		catalog = new ArrayList<Item>(100);
 		map = new HashMap<Integer, Item>();
-		catalog.add(i);
 		map.put(i.sernum, i);
-		isFull = false;
 		brand = i.brandname; // in case the itemheap becomes empty
 	}
 
 	public boolean equals(ItemHeap p) {
-		return (firstitem.equals(p.firstitem)) && (map.equals(p.map)) && (catalog.equals(p.catalog));
+		return (firstitem.equals(p.firstitem)) && (map.equals(p.map)) && brand.equals(p.brand);
 	}
 
+	@Override
 	public String toString() {
-		return "Catalog for " + firstitem.type.toString() + " and the freshest item is : " + firstitem.toString();
+		Item[] a = new Item[0];
+		return "Catalog for " + firstitem.type.toString() + " and the freshest item is : " + firstitem.showInfo()
+				+ " and the items in the list are : " + toArray(a).toString();
 	}
 
+	@Override
 	public boolean isEmpty() {
-		return catalog.isEmpty();
+		return size() == 0;
 	}
 
-	public void remove_expired(){
-		int len = catalog.size();
+	public void remove_expired() {
+		int len = size();
 		if (len == 0) {
 			return;
 		}
-		for (int i = 0; i < len; i++) {
-			Item item = catalog.get(i);
+		Iterator<Item> looper = iterator();
+		while(looper.hasNext()){
+			Item item = looper.next();
 			if (item.isExpired()) {
 				remove(item);
 			}
@@ -66,81 +70,28 @@ public class ItemHeap extends PriorityQueue<Item> {
 		if (new_item.isExpired()) {
 			return false;
 		}
-		boolean a = (map.put(new_item.sernum, new_item) != null);
-		boolean b = catalog.add(new_item);
-		int size = catalog.size();
-		isFull = (100 <= size);
-		bubbleUp();
-		if (isFull) {
-			catalog.trimToSize();
-		}
-		if (size == 1 || peek().equals(new_item)){
-			firstitem = new_item;
-		}
+		boolean a = (map.put(new_item.sernum, new_item) == null);
+		boolean b = super.add(new_item);
 		return a && b;
 	}
 
 	@Override
-	public boolean remove(Object object) {
-		if (object.getClass().getName() != "Item") {
+	public boolean remove(Object object){
+		if ((object instanceof Item) == false) {
 			return false;
 		}
-		Item sold_item = map.remove(((Item) object).sernum);
-		if (sold_item != null) {
-			int last_position = catalog.size() - 1;
-			catalog.set(catalog.indexOf(sold_item), catalog.get(last_position));
-			catalog.remove(last_position);
-			bubbleDown();
-			isFull = (100 <= catalog.size());
-			if (isFull) {
-				catalog.trimToSize();
-			}
-			int size = catalog.size();
-			if (size == 0){
-				firstitem = null;
-			}else{
-				firstitem = peek();
-			}
-			return true;
-		}
-		return false;
+		Item the_item = (Item) object;
+		if (map.get(the_item.sernum) == null){	return false;}
+		boolean a = (map.remove(the_item.sernum, the_item));
+		boolean b = super.remove(object);
+		return a && b;
 	}
 
-	public static void main(String[] args) {
-		System.out.println("In progress: needs poll");
-	}
-
-	public Item peek() {
-		return catalog.get(0);
-	}
-
+	@Override
 	public void clear() {
+		super.clear();
 		map.clear();
-		catalog.clear();
 		firstitem = null;
-	}
-
-	public int size() {
-		return map.size();
-	}
-
-	public boolean offer(Item item) {
-		if (isFull) {
-			return false;
-		}
-		return add(item);
-	}
-
-	public Iterator<Item> iterator() {
-		return catalog.iterator();
-	}
-
-	public Object[] toArray() {
-		return catalog.toArray();
-	}
-
-	public <Item> Item[] toArray(Item[] a) {
-		return catalog.toArray(a);
 	}
 
 	/** return null if the item was not there in the first place. */
@@ -154,16 +105,13 @@ public class ItemHeap extends PriorityQueue<Item> {
 		return map.get(j);
 	}
 
-	public Comparator<Item> comparator() {
-		return (new ItemComparator());
-	}
-
 	/**
 	 * <i> is the serial number of the item. So, the assumption is that reading the
 	 * barcode will automatically identify the serial number.
 	 */
+	@Override
 	public boolean contains(Object object) {
-		if (object instanceof Item) {
+		if ((object instanceof Item) == false){
 			return false;
 		}
 		return map.containsKey(((Item) object).sernum);
@@ -171,7 +119,7 @@ public class ItemHeap extends PriorityQueue<Item> {
 
 	/**
 	 * swap(self,target) switches the position of [self] and [target] in catalog.
-	 */
+	 
 	private void swap(int self, int target) {
 		Item item_a = catalog.get(self);
 		catalog.set(self, catalog.get(target));
@@ -240,6 +188,5 @@ public class ItemHeap extends PriorityQueue<Item> {
 				}
 			}
 		}
-	}
-
+	}*/
 }

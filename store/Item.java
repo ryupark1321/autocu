@@ -10,7 +10,7 @@ public class Item{
   public final String name;
   public final Date expr;
   public double price;
-  public String brandname;
+  public String brandname; //literal name of the brand
      
   public Item(ItemType t, int s, Date i, String n, Date e, double p, String b){
     type = t;
@@ -26,20 +26,19 @@ public class Item{
     return (i.type.equals(type)) && (i.sernum == sernum) && (i.importedate.equals(importedate)) && (name.equals(i.name)) && (expr.equals(i.expr)) && (price == i.price) && (brandname.equals(i.brandname));
   }
             
-  public String toString(Item i){
+  public String toString(){
     return name;
   }
             
-  public void showInfo(){
-    System.out.println("Name : " + name);
-    System.out.println("Serial Number : " + Integer.toString(sernum));
-    System.out.println("Item Classification : " + type.toString());
+  public String showInfo(){
+    String str_1 = "Name : " + name + " \n" + "Serial Number : " + Integer.toString(sernum) + " \n" +
+		"Item Classification : " + type.toString() + " \n"; 
     if (type.perishable) {
-      System.out.println("Expiration Date : " + expr.toString());
+      str_1 += "Expiration Date : " + expr.toString() + " \n";
     }
-    System.out.println("Imported Date : " + importedate.toString());
-    System.out.println("Price : " + Double.toString(price));
-		System.out.println("Brand : " + brandname);
+    String str_2 = "Imported Date : " + importedate.toString() + " \n" + "Price : " + Double.toString(price) + " \n" +
+		"Brand : " + brandname;
+		return (str_1+str_2);
   }
 
   /** Precondition: Item is perishable. */
