@@ -1,18 +1,20 @@
-package store;
+package tests;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.*;
+import org.junit.Test;
 import java.util.*;
+import store.*;
 
-public class ItemHeapTest{
+public class ItemHeapTest {
+
 	@Test
-	public void itemtypetest(){
+	public void typetest() {
 		ItemType type1 = new ItemType("Electronics",false);
 		ItemType type2 = new ItemType("LifeStyle",true);
 		ItemType type3 = new ItemType("Food",true);
 		ItemType type4 = new ItemType("Dairy",true);
-
+		
 		//Constructor Test
 		assertEquals(type1.perishable, false);
 		assertEquals(type1.type, "Electronics");
@@ -22,7 +24,7 @@ public class ItemHeapTest{
 		assertEquals(type3.type, "Food");
 		assertEquals(type4.perishable, true);
 		assertEquals(type4.type, "Dairy");
-
+		
 		//toString Test
 		assertEquals(type1.toString(), "Electronics");
 		assertEquals(type2.toString(), "LifeStyle");
@@ -40,9 +42,8 @@ public class ItemHeapTest{
 		assertEquals(type3.equals(type7), true);
 		assertEquals(type4.equals(type8), false);
 	}
-
 	@Test
-	public void itemtest(){
+	public void itemtest() {
 		ItemType type1 = new ItemType("Electronics",false);
 		ItemType type2 = new ItemType("LifeStyle",true);
 		ItemType type3 = new ItemType("Food",true);
@@ -170,7 +171,7 @@ public class ItemHeapTest{
 	}
 	
 	@Test
-	public void iheaptest(){
+	public void heaptest() {
 		ItemType type1 = new ItemType("Electronics",false);
 		Date day1_1 = new Date(2021,1,1);
 		Date day1_2 = new Date(2021,1,2);

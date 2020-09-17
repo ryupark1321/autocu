@@ -10,7 +10,7 @@ public class Item{
   public final String name;
   public final Date expr;
   public double price;
-  public String brandname;
+  public String brandname; //literal name of the brand
      
   public Item(ItemType t, int s, Date i, String n, Date e, double p, String b){
     type = t;

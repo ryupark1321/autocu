@@ -19,6 +19,8 @@ public class ItemHeap extends PriorityQueue<Item> {
 	public Item firstitem;
 	public HashMap<Integer, Item> map; // have the sernum, you can find the item.
 	public String brand;
+	public String itemname;
+	/** want to have a unique number for the item classification. Decode it. */
 
 	// There needs to be at least one item for
 	public ItemHeap(Item i) {
@@ -45,7 +47,6 @@ public class ItemHeap extends PriorityQueue<Item> {
 	public boolean isEmpty() {
 		return size() == 0;
 	}
-
 
 	public void remove_expired() {
 		int len = size();
@@ -84,10 +85,6 @@ public class ItemHeap extends PriorityQueue<Item> {
 		boolean a = (map.remove(the_item.sernum, the_item));
 		boolean b = super.remove(object);
 		return a && b;
-	}
-
-	public static void main(String[] args) {
-		System.out.println("In progress: need to convert from arraylist to priorityqueue");
 	}
 
 	@Override
