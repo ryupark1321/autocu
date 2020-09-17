@@ -1,15 +1,15 @@
-package tests;
-
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import java.util.*;
 import store.*;
 
+
 public class ItemHeapTest {
 
 	@Test
 	public void typetest() {
+		System.out.println("we started here");
 		ItemType type1 = new ItemType("Electronics",false);
 		ItemType type2 = new ItemType("LifeStyle",true);
 		ItemType type3 = new ItemType("Food",true);

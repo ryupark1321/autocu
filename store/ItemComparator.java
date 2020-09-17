@@ -1,10 +1,6 @@
 package store;
 
 import java.util.Comparator;
-import java.util.function.Function;
-import java.util.function.ToDoubleFunction;
-import java.util.function.ToLongFunction;
-import java.util.function.ToIntFunction;
 
 public class ItemComparator implements Comparator<Item>{
     private boolean FreshFirst;
