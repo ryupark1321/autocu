@@ -44,7 +44,7 @@ public class Item{
   /** Precondition: Item is perishable. */
   public boolean isExpired(){
     Date now = new Date();
-    return (expr.after(now));
+    return (now.after(expr));
   }
     
   /** Precondition: Same itemtype, same product, different items.

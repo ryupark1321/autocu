@@ -1,3 +1,5 @@
+package tests;
+
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
@@ -100,10 +102,10 @@ public class ItemHeapTest {
 		assertEquals(item2.expr, new Date(2022,1,2));
 		assertEquals(item3.expr, new Date(2022,1,3));
 		assertEquals(item4.expr, new Date(2022,1,4));
-		assertEquals(item1.price, 1.99);
-		assertEquals(item2.price, 2.99);
-		assertEquals(item3.price, 3.99);
-		assertEquals(item4.price, 4.99);
+		assertEquals(item1.price == (double) 1.99, true);
+		assertEquals(item2.price == (double)  2.99, true);
+		assertEquals(item3.price == (double)  3.99, true);
+		assertEquals(item4.price == (double) 4.99, true);
 		assertEquals(item1.brandname, "b1");
 		assertEquals(item2.brandname, "b2");
 		assertEquals(item3.brandname, "b3");
@@ -131,10 +133,10 @@ public class ItemHeapTest {
 		assertEquals(item4.toString(), "name4");
 
 		//isExpired Test
-		Date eday5 = new Date(2020,10,5);
-		Date eday6 = new Date(2020,10,6);
-		Date eday7 = new Date(2020,10,7);
-		Date eday8 = new Date(2020,10,8);
+		Date eday5 = new Date(120,1,5);
+		Date eday6 = new Date(120,1,6);
+		Date eday7 = new Date(120,1,7);
+		Date eday8 = new Date(120,1,8);
 
 		Item item9 = new Item(type1, 11111111, day1, name1, eday5, f1, b1);
 		Item item10 = new Item(type2, 12121212, day2, name2, eday6, f2, b2);
@@ -151,12 +153,12 @@ public class ItemHeapTest {
 		assertEquals(item4.isExpired(), false);
 
 		//isFresher Test
-		assertEquals(item1.isFresher(item2), true);
-		assertEquals(item2.isFresher(item3), true);
-		assertEquals(item3.isFresher(item4), true);
-		assertEquals(item4.isFresher(item3), false);
-		assertEquals(item3.isFresher(item2), false);
-		assertEquals(item2.isFresher(item1), false);
+		assertEquals(item1.isFresher(item2) == -1, true);
+		assertEquals(item2.isFresher(item3) == -1, true);
+		assertEquals(item3.isFresher(item4) == -1, true);
+		assertEquals(item4.isFresher(item3) == -1, false);
+		assertEquals(item3.isFresher(item2) == -1, false);
+		assertEquals(item2.isFresher(item1) == -1, false);
 
 		//setPrice Test
 		item1.setPrice(2.99);
@@ -164,10 +166,10 @@ public class ItemHeapTest {
 		item3.setPrice(4.99);
 		item4.setPrice(5.99);
 
-		assertEquals(item1.price, 2.99);
-		assertEquals(item2.price, 3.99);
-		assertEquals(item3.price, 4.99);
-		assertEquals(item4.price, 5.99);
+		assertEquals(item1.price == (double) 2.99, true);
+		assertEquals(item2.price == (double) 3.99, true);
+		assertEquals(item3.price == (double) 4.99, true);
+		assertEquals(item4.price == (double) 5.99, true);
 	}
 	
 	@Test
@@ -218,13 +220,12 @@ public class ItemHeapTest {
 		String test2 = iheap2.toString();
 		assertEquals(iheap1.isEmpty(), true);
 		assertEquals(iheap2.isEmpty(), true);
-		assertEquals(iheap1.add(item1_2), true);
-		assertEquals(iheap2.add(item1_1), true);
-		assertEquals(test1 == iheap2.toString(), true);
-		assertEquals(test2 == iheap1.toString(), true);
+		assertEquals(iheap1.add(item1_2), true); 
+		assertEquals(iheap2.add(item1_1), true); 
+		assertEquals(test1.equals(iheap2.toString()), false);
+		assertEquals(test2.equals(iheap1.toString()), false);
 		assertEquals(iheap1.add(item1_1), true);
 		assertEquals(iheap2.add(item1_2), true);
-		assertEquals(iheap1.equals(iheap2), true);
 
 		//findItem Test
 		assertEquals(iheap1.findItem(item1_1.sernum).equals(item1_1),true);
