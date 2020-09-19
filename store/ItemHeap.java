@@ -25,10 +25,10 @@ public class ItemHeap extends PriorityQueue<Item> {
 	// There needs to be at least one item for
 	public ItemHeap(Item i) {
 		super(new ItemComparator());
-		add(i);
-		firstitem = i;
 		map = new HashMap<Integer, Item>();
+		super.add(i);
 		map.put(i.sernum, i);
+		firstitem = i;
 		brand = i.brandname; // in case the itemheap becomes empty
 	}
 
@@ -39,8 +39,14 @@ public class ItemHeap extends PriorityQueue<Item> {
 	@Override
 	public String toString() {
 		Item[] a = new Item[0];
-		return "Catalog for " + firstitem.type.toString() + " and the freshest item is : " + firstitem.showInfo()
-				+ " and the items in the list are : " + toArray(a).toString();
+		String items = "";
+		for (Item item : toArray(a)){
+			items += item.toString() + " ";
+		}
+		if (firstitem == null){return "Catalog for " + brand + " " + itemname + " and the freshest item is : " + " NULL"
+				+ " and the items in the list are : " + items;}
+		return "Catalog for " + brand + " " + itemname + " and the freshest item is : " + firstitem.showInfo()
+				+ " and the items in the list are : " + items;
 	}
 
 	@Override
@@ -72,6 +78,7 @@ public class ItemHeap extends PriorityQueue<Item> {
 		}
 		boolean a = (map.put(new_item.sernum, new_item) == null);
 		boolean b = super.add(new_item);
+		if (firstitem == null){ firstitem = new_item;}
 		return a && b;
 	}
 
@@ -84,6 +91,7 @@ public class ItemHeap extends PriorityQueue<Item> {
 		if (map.get(the_item.sernum) == null){	return false;}
 		boolean a = (map.remove(the_item.sernum, the_item));
 		boolean b = super.remove(object);
+		if (firstitem.equals(the_item)){firstitem = null;}
 		return a && b;
 	}
 

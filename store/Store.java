@@ -37,7 +37,7 @@ Total report for defective items will occur in the server so just file a report 
 	public Store(ItemHeap[] given){
 		this();
 		for (int len = 0; len < given.length; len++){
-			add(given[len]);
+			put(Store.item_to_heapnum(given[len].firstitem), given[len]);
 		} 	
 	}
 
@@ -51,7 +51,7 @@ Total report for defective items will occur in the server so just file a report 
 
 	/** we must sort out the new items and place them on the right itemheap*/
 	public void restock(Item[] newitems){
-		for (Item item : newItems){
+		for (Item item : newitems){
 			String heapnum = Store.item_to_heapnum(item);
 			ItemHeap heap = get(heapnum);
 			heap.add(item);
