@@ -19,7 +19,7 @@ public class Item{
     name = n;
     expr = e;
     price = p;
-		brandname = b;
+	brandname = b;
   }
 
   public boolean equals(Item i){

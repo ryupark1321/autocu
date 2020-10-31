@@ -20,14 +20,13 @@ Total report for defective items will occur in the server so just file a report 
 			where should the transition from brandname to brand happen
 	*/
 
+	private static HashMap<ItemType, String> type_to_num; 
+	private static HashMap<String, String> brand_to_num;
+	private static HashMap<String, String> name_to_num;
+
 	//static method for converting item into a heapnum: need to figure this out
 	private static String item_to_heapnum(Item item){
-		return "";
-		/** 
-		ItemType type;
-		String name;
-  	String brandname;
-	*/
+		return type_to_num.get(item.type) + brand_to_num.get(item.brandname) + name_to_num.get(item.name);
 	}
 
   public Store(){
