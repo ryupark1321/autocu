@@ -8,14 +8,6 @@ import java.util.Spliterator;
 import java.util.Comparator;
 
 public class ItemHeap extends PriorityQueue<Item> {
-	/**
-	 * Programming Notes
-	 * 
-	 * ## Big Picture Analysis - Maybe have a server that controls all the stores? -
-	 * Each store contains an array of pointers to each ItemHeap - Here, we need to
-	 * think about what we exactly need. The store does not necessarily have to look
-	 * for a specific item, we just need to be able to pull out the first items.
-	 */
 	public Item firstitem;
 	public HashMap<Integer, Item> map; // have the sernum, you can find the item.
 	public String brand;
