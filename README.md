@@ -8,6 +8,7 @@ Automated Convenience Store
 Current Progress
 ------------------------------------------------------------------
 Server and Report is put on hold for a moment.
-Need to study DB
+Need to write documentation 
+Need to study DB before server and report
 
 [![Run on Repl.it](https://repl.it/badge/github/ryupark1321/autocu)](https://repl.it/github/ryupark1321/autocu)
